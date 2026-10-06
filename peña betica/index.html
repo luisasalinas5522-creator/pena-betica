@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Peña Bética | Bar Restaurante</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background: #f7f4eb;
+            color: #183b27;
+        }
+
+        /* ===== NAVEGACIÓN ===== */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(4, 48, 24, 0.97);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #c9a646;
+        }
+
+        .logo-nav {
+            color: #e4c76b;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e4c76b;
+        }
+
+        /* ===== INICIO ===== */
+.hero-logo {
+    width: 190px;
+    height: 190px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.35));
+}
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(2, 45, 22, 0.80), rgba(2, 45, 22, 0.88)),
+                url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            color: white;
+        }
+
+        .hero-content .small-title {
+            color: #e4c76b;
+            letter-spacing: 5px;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(55px, 9vw, 105px);
+            color: #f0d47d;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 2px 3px 5px #000;
+        }
+
+        .hero-content h2 {
+            font-size: 30px;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 18px;
+        }
+
+        .hero-content p {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .btn-gold {
+            background: #d5b455;
+            color: #073b20;
+        }
+
+        .btn-outline {
+            border: 1px solid #d5b455;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* ===== SECCIONES ===== */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #b18b2e;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 45px;
+            color: #124b2b;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            font-family: Arial, sans-serif;
+            color: #666;
+            margin-top: 12px;
+        }
+
+        /* ===== SOBRE NOSOTROS ===== */
+
+        .about {
+            background: #fffdf7;
+        }
+
+        .about-content {
+            max-width: 950px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            line-height: 1.9;
+            color: #555;
+        }
+
+        .highlight {
+            margin-top: 30px;
+            font-size: 25px !important;
+            color: #174d2e !important;
+            font-style: italic;
+            font-family: Georgia, serif !important;
+        }
+
+        /* ===== CARTA ===== */
+
+        .menu {
+            background: #f1eee4;
+        }
+
+        .menu-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+    background: #fffdf8;
+    padding: 32px;
+    border: 1px solid #ddd2ad;
+    border-top: 5px solid #b99a42;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+    border-radius: 3px;
+}
+
+.menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.13);
+}
+
+        .menu-card h3 {
+            color: #174b2c;
+            font-size: 25px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #ddd2ad;
+            padding-bottom: 12px;
+        }
+
+        .dish {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 9px 0;
+            border-bottom: 1px dotted #ccc;
+            font-family: Arial, sans-serif;
+            color: #444;
+        }
+
+        .price {
+            color: #8f6e1e;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* ===== EXPERIENCIA ===== */
+
+        .experience {
+            background: #073b20;
+            color: white;
+            text-align: center;
+        }
+
+        .experience .section-title h2 {
+            color: #f0d47d;
+        }
+
+        .experience .section-title p {
+            color: #ddd;
+        }
+
+        .experience-boxes {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .experience-box {
+            padding: 30px 20px;
+            border: 1px solid rgba(228,199,107,0.5);
+        }
+
+        .experience-box .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .experience-box h3 {
+            color: #e4c76b;
+            margin-bottom: 10px;
+        }
+
+        .experience-box p {
+            font-family: Arial, sans-serif;
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACTO ===== */
+
+        .contact {
+            background: #fffdf7;
+        }
+
+        .contact-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .contact-box {
+            padding: 30px;
+            background: #f3f0e7;
+        }
+
+        .contact-box h3 {
+            color: #174b2c;
+            margin-bottom: 12px;
+        }
+
+        .contact-box p {
+            font-family: Arial, sans-serif;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #022d16;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            color: #e4c76b;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .logo-nav {
+                font-size: 18px;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .menu-grid,
+            .experience-boxes,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero-content h1 {
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+
+    <nav>
+        <div class="logo-nav">PEÑA BÉTICA</div>
+
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#carta">Carta</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- INICIO -->
+}
+    <header class="hero" id="inicio">
+
+        <div class="hero-content">
+
+            <img src="imagenes/logo peña betica.jpeg"
+     alt=""
+     class="hero-logo">
+
+<img src="imagenes/logo-pena-betica.jpeg"
+     alt=""
+     class="hero-logo">
+
+<div class="small-title">BAR · RESTAURANTE</div>
+
+            <h1>PEÑA BÉTICA</h1>
+
+            <h2>Sabores de Andalucía</h2>
+
+            <p>TAPAS · CARNES · PESCADOS · MONTADITOS</p>
+
+            <div class="buttons">
+                <a href="#carta" class="btn btn-gold">VER NUESTRA CARTA</a>
+
+                <a href="#contacto" class="btn btn-outline">
+                    RESERVAR MESA
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- NOSOTROS -->
+
+    <section class="about" id="nosotros">
+
+        <div class="section-title">
+
+            <span>Conócenos</span>
+
+            <h2>Tradición en cada bocado</h2>
+
+        </div>
+
+        <div class="about-content">
+
+            <p>
+                Bienvenidos a Peña Bética, un espacio donde la tradición
+                andaluza se encuentra con el buen ambiente de un auténtico
+                bar-restaurante.
+            </p>
+
+            <p class="highlight">
+                “Sabores de Andalucía, tradición en cada bocado.”
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CARTA -->
+
+    <section class="menu" id="carta">
+
+        <div class="section-title">
+
+            <span>Nuestra gastronomía</span>
+
+            <h2>La Carta</h2>
+
+            <p>Descubre nuestros sabores y disfruta de la tradición andaluza.</p>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+            <!-- TAPAS -->
+
+            <div class="menu-card">
+
+                <h3>🥗 TAPAS FRÍAS</h3>
+
+                <div class="dish">
+                    <span>Ensaladilla</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Salpicón de marisco</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Pastas alioli</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Boquerones al vinagre</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Gambas</span>
+                    <span class="price">4,00 €</span>
+                </div>
+
+            </div>
+
+
+            <!-- CHACINAS -->
+
+            <div class="menu-card">
+
+                <h3>🥩 CHACINAS</h3>
+
+                <div class="dish">
+                    <span>Jamón ibérico</span>
+                    <span class="price">5,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Queso manchego</span>
+                    <span class="price">4,00 €</span>
+                </div>
+
+            </div>
+
+
+            <!-- MAR -->
+
+            <div class="menu-card">
+
+                <h3>🐟 DEL MAR</h3>
+
+                <div class="dish">
+                    <span>Variado de pescado</span>
+                    <span class="price">10,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Boquerones</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Calamares</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Chocos</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+            </div>
+
+
+            <!-- TIERRA -->
+
+            <div class="menu-card">
+
+                <h3>🍖 DE LA TIERRA</h3>
+
+                <div class="dish">
+                    <span>Carne con tomate</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Carrillada con patatas</span>
+                    <span class="price">4,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Churrasco de cerdo</span>
+                    <span class="price">10,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Churrasco de pollo</span>
+                    <span class="price">6,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Solomillo al whisky</span>
+                    <span class="price">4,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Pincho de pollo</span>
+                    <span class="price">4,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Sangre encebollada</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Menudo (callos)</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Lagartito</span>
+                    <span class="price">4,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Asadura de pollo</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+            </div>
+
+
+            <!-- MONTADITOS -->
+
+            <div class="menu-card">
+
+                <h3>🥖 MONTADITOS</h3>
+
+                <div class="dish">
+                    <span>Lomo</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Pollo</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Gambas alioli</span>
+                    <span class="price">4,00 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Jamón ibérico</span>
+                    <span class="price">4,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Jamón y queso</span>
+                    <span class="price">4,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Croquetas pollo o jamón</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+                <div class="dish">
+                    <span>Nuggets de pollo</span>
+                    <span class="price">3,50 €</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPERIENCIA -->
+
+    <section class="experience">
+
+        <div class="section-title">
+
+            <span>Nuestra esencia</span>
+
+            <h2>Una experiencia andaluza</h2>
+
+            <p>
+                Ven a disfrutar de buena comida, tradición y un ambiente especial.
+            </p>
+
+        </div>
+
+
+        <div class="experience-boxes">
+
+            <div class="experience-box">
+
+                <div class="icon">🍷</div>
+
+                <h3>Buen ambiente</h3>
+
+                <p>
+                    Un espacio pensado para compartir y disfrutar.
+                </p>
+
+            </div>
+
+
+            <div class="experience-box">
+
+                <div class="icon">🍴</div>
+
+                <h3>Sabor tradicional</h3>
+
+                <p>
+                    Tapas y platos inspirados en la gastronomía andaluza.
+                </p>
+
+            </div>
+
+
+            <div class="experience-box">
+
+                <div class="icon">💚</div>
+
+                <h3>Pasión bética</h3>
+
+                <p>
+                    Una identidad que une gastronomía y pasión por el Betis.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+
+    <section class="contact" id="contacto">
+
+        <div class="section-title">
+
+            <span>Estamos para atenderte</span>
+
+            <h2>Visítanos</h2>
+
+            <p>Reserva tu mesa y disfruta de nuestros sabores.</p>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+            <div class="contact-box">
+
+                <h3>📍 Dirección</h3>
+
+                <p>
+                    Próximamente<br>
+                    Peña Bética
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>📞 Teléfono</h3>
+
+                <p>
+                    Próximamente<br>
+                    Contáctanos para reservar
+                </p>
+
+            </div>
+
+
+            <div class="contact-box">
+
+                <h3>🕐 Horario</h3>
+
+                <p>
+                    Consulta nuestros<br>
+                    horarios de atención
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>PEÑA BÉTICA</h3>
+
+        <p>
+            BAR · RESTAURANTE · SABORES DE ANDALUCÍA
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Peña Bética. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+<section id="sobre-nosotros" style="text-align: center; padding: 50px 20px; background-color: #f5f5f5; color: #222;">
+
+    <h2 style="font-size: 32px; color: #006633; margin-bottom: 25px;">
+        💚 Sobre Nosotros
+    </h2>
+
+    <p style="font-size: 18px; line-height: 1.8; max-width: 800px; margin: auto;">
+        Peña Bética es un punto de encuentro para todos los aficionados
+        del Real Betis Balompié. Un espacio creado para compartir nuestra
+        pasión por el Betis, disfrutar de los partidos y vivir juntos cada
+        momento de nuestro equipo.
+    </p>
+
+    <p style="font-size: 18px; line-height: 1.8; max-width: 800px; margin: 25px auto 0;">
+        Aquí celebramos nuestras victorias, acompañamos al equipo en los
+        momentos difíciles y mantenemos viva la pasión verdiblanca.
+        ¡Viva el Betis!
+    </p>
+
+</section>
+
+    <h2 style="font-size: 32px; margin-bottom: 30px;">
+        Contáctanos
+    </h2>
+
+    <p style="font-size: 18px;">
+        📱 <strong>WhatsApp</strong>
+    </p>
+
+<a href="https://wa.me/34610180352"
+       style="display: inline-block; background-color: white; color: #006633; text-decoration: none; padding: 12px 25px; border-radius: 25px; font-weight: bold;">
+        💬 Escríbenos por WhatsApp
+    </a>
+
+    <p style="font-size: 18px; margin-top: 30px;">
+        📍 <strong>Dirección</strong>
+    </p>
+
+    <a href="https://www.google.com/maps/search/?api=1&query=Avenida+Andalucía+1941320+Cantillana+Sevilla"
+   target="_blank"
+   style="display: inline-block; background-color: white; color: #006633; text-decoration: none; padding: 12px 25px; border-radius: 25px; font-weight: bold;">
+    📍 Ver ubicación en Google Maps
+</a>
+</section>
+    <h2>Contáctanos</h2>
+
+    <p>📱 <strong>WhatsApp</strong></p>
+    <p>
+        <a href="https://wa.me/34610180352" target="_blank">
+            +34 610 180 352
+        </a>
+    </p>
+
+    <p>📍 <strong>Dirección</strong></p>
+    <p>
+        Avenida Andalucía #1941320<br>
+        Cantillana, Sevilla
+    </p>
+</section>
+</html>
